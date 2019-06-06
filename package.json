@@ -6,11 +6,12 @@
     "eslint": "^5.16.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "NODE_PATH=src/ react-scripts start",
+    "build": "NODE_PATH=src/ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -40,10 +41,10 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }, 
-  "lint-staged" :{ 
-    "*.js" : [
-      "prettier --config .prettierrc --write", 
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --config .prettierrc --write",
       "eslint --fix",
       "git add"
     ]
