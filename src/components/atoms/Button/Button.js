@@ -5,7 +5,7 @@ const Button = styled.button`
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  width: ${({ width }) => width || '200px'};
+  width: 200px;
   height: 40px;
   font-family: 'Montserrat';
   font-weight: bold;
@@ -24,5 +24,3 @@ const Button = styled.button`
 `;
 
 export default Button;
-
-// background-color: ${({color})=> color || 'hsl(55, 100%, 75%)'};

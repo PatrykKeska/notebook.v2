@@ -2,10 +2,7 @@ import React from 'react';
 import Button from 'components/atoms/Button/Button';
 import GlobalStyle from 'theme/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
-
-const theme = {
-  primary: 'green',
-};
+import { theme } from 'theme/mainTheme';
 
 const Root = () => (
   <div>
