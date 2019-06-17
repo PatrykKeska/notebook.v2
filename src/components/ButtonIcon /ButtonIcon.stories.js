@@ -10,7 +10,7 @@ import ButtonIcon from './ButtonIcon';
 const BackgroundColor = styled.div`
   width: 300px;
   height: 300px;
-  background-color: ${({ theme }) => theme.primary};
+  background-color: ${({ theme }) => theme.note};
   display: flex;
   justify-content: center;
   align-items: center;
