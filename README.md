@@ -1,3 +1,11 @@
+Important ! 
+this is not my own project . I'm trying to create similar project which i saw while course, and by this I improve my skills in react :)  
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
