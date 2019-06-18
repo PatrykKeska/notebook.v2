@@ -82,7 +82,7 @@ const Card = ({ cardType }) => (
 );
 
 Card.propTypes = {
-  cardType: PropTypes.string,
+  cardType: PropTypes.oneOf(['note', 'facebook', 'article']),
 };
 
 Card.defaultProps = {

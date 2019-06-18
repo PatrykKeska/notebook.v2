@@ -1,19 +1,26 @@
 import React from 'react';
-import Button from 'components/atoms/Button/Button';
-import GlobalStyle from 'theme/GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'theme/mainTheme';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import MainTemplate from 'templates/MainTemplate';
+import Notes from 'views/Notes';
+import Facebook from 'views/Facebook';
+import Articles from 'views/Articles';
 
 const Root = () => (
-  <div>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <>
-        <Button width="200px">Hello World</Button>
-        <Button secondary>Remove</Button>
-      </>
-    </ThemeProvider>
-  </div>
+  <MainTemplate>
+    <BrowserRouter>
+      <Switch>
+        <Route exact
+          path="/"
+          component={Notes} />
+        <Facebook exact
+          path="/facebook"
+          component={Facebook} />
+        <Articles exact
+          path="/articles"
+          component={Articles} />
+      </Switch>
+    </BrowserRouter>
+  </MainTemplate>
 );
 
 export default Root;
