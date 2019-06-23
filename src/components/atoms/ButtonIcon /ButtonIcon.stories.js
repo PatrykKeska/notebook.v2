@@ -16,7 +16,7 @@ const BackgroundColor = styled.div`
   align-items: center;
 `;
 
-storiesOf('ButtonIcon', module)
+storiesOf('atoms/ButtonIcon', module)
   .addDecorator(story => <BackgroundColor>{story()}</BackgroundColor>)
   .add('bulb', () => <ButtonIcon icon={bulbIcon} />)
   .add('bulbActive', () => <ButtonIcon active
