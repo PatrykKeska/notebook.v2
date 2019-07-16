@@ -2,17 +2,19 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import bulbIcon from 'assets/Icons/bulb.svg';
-// import addIcon from 'assets/Icons/add.svg';
+import PropTypes from 'prop-types';
 import logoutIcon from 'assets/Icons/logout.svg';
 import pencilIcon from 'assets/Icons/pencil.svg';
 import facebookIcon from 'assets/Icons/facebook-black.svg';
 import ButtonIcon from '../../atoms/ButtonIcon /ButtonIcon';
 
-const YellowBackground = styled.div`
-  background-color: ${({ theme }) => theme.note};
+const BackgroundTheme = styled.div`
+  background-color: ${({ theme, pageType }) => theme[pageType]};
   max-width: 80px;
-  height: 99vh;
-
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,16 +26,15 @@ const InnerWrapper = styled.div`
   margin-top: 50px;
 `;
 
-const Sidebar = () => (
-  <YellowBackground>
+const Sidebar = ({ pageType }) => (
+  <BackgroundTheme pageType={pageType}>
     <InnerWrapper>
-      <ButtonIcon exact
-        as={NavLink}
-        to="/"
+      <ButtonIcon as={NavLink}
+        to="/notes"
         activeclass="active"
         icon={pencilIcon} />
       <ButtonIcon as={NavLink}
-        to="/facebook"
+        to="/facebooks"
         activeclass="active"
         icon={facebookIcon} />
       <ButtonIcon as={NavLink}
@@ -46,7 +47,11 @@ const Sidebar = () => (
       to="/login"
       activeclass="active"
       icon={logoutIcon} />
-  </YellowBackground>
+  </BackgroundTheme>
 );
+
+Sidebar.propTypes = {
+  pageType: PropTypes.string.isRequired,
+};
 
 export default Sidebar;

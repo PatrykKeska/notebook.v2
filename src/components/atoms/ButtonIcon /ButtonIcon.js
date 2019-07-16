@@ -11,7 +11,7 @@ const ButtonIcon = styled.button`
   background-position: center;
   background-size: 50% 50%;
   background-image: url(${({ icon }) => icon});
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   will-change: auto;
 
   &.active {

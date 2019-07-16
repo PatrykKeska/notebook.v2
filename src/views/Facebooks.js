@@ -2,45 +2,41 @@ import React from 'react';
 import GridTemplate from '../templates/GridTemplate';
 import Card from '../components/molecules/Card/Card';
 
-const dataArticles = [
+const dataFacebook = [
   {
     id: 1,
-    title: 'Article 1',
+    title: 'Patryk Keska',
     date: '3 days',
     content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    link: 'https://www.google.com/',
   },
   {
     id: 2,
-    title: 'Article 2Article 2Article 2Article',
+    title: 'Soemone 1',
     date: '3 days',
     content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    link: 'https://www.google.com/',
   },
   {
     id: 3,
-    title: 'Article 3',
+    title: 'Someone 2',
     date: '3 days',
     content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    link: 'https://www.google.com/',
   },
 ];
 
-const Articles = () => (
-  <GridTemplate pageType="articles">
+const Facebooks = () => (
+  <GridTemplate pageType="facebooks">
     <>
-      {dataArticles.map(item => (
+      {dataFacebook.map(item => (
         <Card
           id={item.id}
-          cardType="articles"
+          cardType="facebooks"
           title={item.title}
           dataCreated={item.date}
           content={item.content}
           key={item.id}
-          link={item.link}
         />
       ))}
     </>
   </GridTemplate>
 );
-export default Articles;
+export default Facebooks;
