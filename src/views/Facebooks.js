@@ -1,42 +1,41 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import GridTemplate from '../templates/GridTemplate';
 import Card from '../components/molecules/Card/Card';
 
-const dataFacebook = [
-  {
-    id: 1,
-    title: 'Patryk Keska',
-    date: '3 days',
-    content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-  },
-  {
-    id: 2,
-    title: 'Soemone 1',
-    date: '3 days',
-    content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-  },
-  {
-    id: 3,
-    title: 'Someone 2',
-    date: '3 days',
-    content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-  },
-];
-
-const Facebooks = () => (
+const Facebooks = ({ facebooks }) => (
   <GridTemplate pageType="facebooks">
     <>
-      {dataFacebook.map(item => (
-        <Card
-          id={item.id}
+      {facebooks.map(({ id, title, date, content }) => (
+        <Card id={id}
           cardType="facebooks"
-          title={item.title}
-          dataCreated={item.date}
-          content={item.content}
-          key={item.id}
-        />
+          title={title}
+          date={date}
+          content={content}
+          key={id} />
       ))}
     </>
   </GridTemplate>
 );
-export default Facebooks;
+
+Facebooks.prototype = {
+  facebooks: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      key: PropTypes.number,
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+};
+
+Facebooks.defaultProops = {
+  facebooks: [],
+};
+
+const mapStateToProps = ({ facebooks }) => ({ facebooks });
+
+export default connect(mapStateToProps)(Facebooks);

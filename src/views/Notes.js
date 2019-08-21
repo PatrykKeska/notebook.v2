@@ -1,49 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import GridTemplate from '../templates/GridTemplate';
 import Card from '../components/molecules/Card/Card';
 
-const dataNotes = [
-  {
-    title: 'Learn React',
-    date: '3 days',
-    content: 'keep going and learn react ,',
-    id: 1,
-  },
-  {
-    title: 'Learn JS',
-    date: '2 days',
-    content: 'keep going and learn js ,',
-    id: 2,
-  },
-  {
-    title: 'Learn Css',
-    date: '10 days',
-    content: 'keep going and learn css ,',
-    id: 3,
-  },
-  {
-    title: 'Learn node.js',
-    date: '1 days',
-    content: 'keep going and learn node.js ,',
-    id: 4,
-  },
-];
-
-const Notes = () => (
+const Notes = ({ notes }) => (
   <GridTemplate pageType="notes">
     <>
-      {dataNotes.map(item => (
-        <Card
-          cardType="notes"
-          title={item.title}
-          dataCreated={item.date}
-          content={item.content}
-          key={item.id}
-          id={item.id}
-        />
+      {notes.map(({ title, date, content, id }) => (
+        <Card cardType="notes"
+          title={title}
+          date={date}
+          content={content}
+          key={id}
+          id={id} />
       ))}
     </>
   </GridTemplate>
 );
 
-export default Notes;
+Notes.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      key: PropTypes.number,
+      id: PropTypes.number.isRequired,
+    }),
+  ),
+};
+
+Notes.defaultProps = {
+  notes: [],
+};
+
+const mapStateToProps = ({ notes }) => ({ notes });
+
+export default connect(mapStateToProps)(Notes);

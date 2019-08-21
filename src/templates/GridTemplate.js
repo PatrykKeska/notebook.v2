@@ -12,8 +12,8 @@ const StyledWrapper = styled.div`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 60px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 50px 50px;
 `;
 
 const StyledSubtittle = styled(Paragraph)`

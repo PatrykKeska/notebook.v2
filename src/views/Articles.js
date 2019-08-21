@@ -1,46 +1,45 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import GridTemplate from '../templates/GridTemplate';
 import Card from '../components/molecules/Card/Card';
 
-const dataArticles = [
-  {
-    id: 1,
-    title: 'Article 1',
-    date: '3 days',
-    content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 2,
-    title: 'Article 2Article 2Article 2Article',
-    date: '3 days',
-    content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    link: 'https://www.google.com/',
-  },
-  {
-    id: 3,
-    title: 'Article 3',
-    date: '3 days',
-    content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-    link: 'https://www.google.com/',
-  },
-];
-
-const Articles = () => (
+const Articles = ({ articles }) => (
   <GridTemplate pageType="articles">
     <>
-      {dataArticles.map(item => (
+      {articles.map(({ id, title, date, content, link }) => (
         <Card
-          id={item.id}
+          id={id}
           cardType="articles"
-          title={item.title}
-          dataCreated={item.date}
-          content={item.content}
-          key={item.id}
-          link={item.link}
+          title={title}
+          dataCreated={date}
+          content={content}
+          key={id}
+          link={link}
         />
       ))}
     </>
   </GridTemplate>
 );
-export default Articles;
+
+Articles.prototype = {
+  articles: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      key: PropTypes.number,
+      id: PropTypes.number.isRequired,
+      link: PropTypes.string,
+    }),
+  ),
+};
+
+Articles.defaultProops = {
+  articles: [],
+};
+
+const mapStateToProps = ({ articles }) => ({ articles });
+
+export default connect(mapStateToProps)(Articles);

@@ -5,7 +5,7 @@ import Sidebar from '../components/organisms/Sidebar/Sidebar';
 const UserPageTemplate = ({ children, pageType }) => (
   <>
     <Sidebar pageType={pageType} />
-    {children}g
+    {children}
   </>
 );
 
